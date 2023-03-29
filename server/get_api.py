@@ -1,4 +1,10 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
+import json
+
+listarry=[
+    {'id':1,'todo':'list1'},
+    {'id':2,'todo':'routing'}
+]
 
 class RequestHandler(BaseHTTPRequestHandler):
 
@@ -7,8 +13,8 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/plain; charset=utf-8')
         self.end_headers()
 
-        if self.path == '/hello':
-            message = 'world'
+        if self.path == '/GET':
+            message = json.dumps(listarry)
         else:
             message = '404 Not Found'
 
